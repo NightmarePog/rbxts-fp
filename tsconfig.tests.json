@@ -1,0 +1,11 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "tests",
+		"outDir": "test-out",
+		"declaration": false,
+		"tsBuildInfoFile": ".tests.tsbuildinfo"
+	},
+	"include": ["tests/runtime.ts", "tests/runner.server.ts", "tests/types.ts"],
+	"exclude": ["node_modules", "out", "tests/negative"]
+}

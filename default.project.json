@@ -1,0 +1,16 @@
+{
+	"name": "rbxts-fp-tests",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"fp": {
+				"$path": "out"
+			}
+		},
+		"ServerScriptService": {
+			"tests": {
+				"$path": "test-out"
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "@rbxts/fp",
+	"version": "0.1.0",
+	"description": "Practical, lightweight functional programming primitives for roblox-ts.",
+	"main": "init.luau",
+	"types": "index.d.ts",
+	"files": ["*.luau", "*.d.ts", "README.md"],
+	"keywords": ["roblox", "roblox-ts", "rbxts", "functional-programming"],
+	"license": "MIT",
+	"publishConfig": { "access": "public" },
+	"peerDependencies": {
+		"@rbxts/types": ">=1.0.920",
+		"roblox-ts": "^3.0.0"
+	}
+}

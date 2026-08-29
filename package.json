@@ -1,0 +1,28 @@
+{
+	"name": "@rbxts/fp-source",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Practical, lightweight functional programming primitives for roblox-ts.",
+	"scripts": {
+		"build": "rbxtsc --type=package && cp package.dist.json out/package.json && cp README.md out/README.md",
+		"check": "rbxtsc --type=package && rbxtsc -p tsconfig.tests.json --noInclude && tsc -p tsconfig.type-tests.json",
+		"clean": "rm -rf out test-out .tsbuildinfo .tests.tsbuildinfo .type-tests.tsbuildinfo"
+	},
+	"keywords": [
+		"roblox",
+		"roblox-ts",
+		"rbxts",
+		"functional-programming"
+	],
+	"license": "MIT",
+	"peerDependencies": {
+		"@rbxts/types": ">=1.0.920",
+		"roblox-ts": "^3.0.0"
+	},
+	"devDependencies": {
+		"@rbxts/compiler-types": "3.0.0-types.0",
+		"@rbxts/types": "^1.0.920",
+		"roblox-ts": "^3.0.0",
+		"typescript": "5.5.3"
+	}
+}

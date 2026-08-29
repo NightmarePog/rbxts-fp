@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"module": "commonjs",
+		"moduleResolution": "Node",
+		"noLib": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleDetection": "force",
+		"strict": true,
+		"target": "ESNext",
+		"typeRoots": ["node_modules/@rbxts", "../../node_modules/@rbxts"],
+		"types": ["compiler-types", "types"],
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		},
+		"rootDir": "src",
+		"outDir": "out",
+		"declaration": true,
+		"incremental": true,
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "out", "tests"]
+}

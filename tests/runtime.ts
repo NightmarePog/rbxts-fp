@@ -1,3 +1,4 @@
+import make from "@rbxts/instance-factory";
 import {
 	Collection,
 	Effect,
@@ -8,6 +9,7 @@ import {
 	absurd,
 	compose,
 	connectionCleanup,
+	clearAttributes,
 	filterMap,
 	findMap,
 	flow,
@@ -19,6 +21,8 @@ import {
 	partition,
 	pipe,
 	scan,
+	sequence,
+	setAttributes,
 	sumBy,
 	uniqueBy,
 	zipWith,
@@ -34,6 +38,20 @@ function throws(callback: () => void, label: string): void {
 }
 
 export function runRuntimeTests(): void {
+	const sequencedValues = new Array<number>();
+	sequence(
+		(value: number) => sequencedValues.push(value),
+		(value) => sequencedValues.push(value * 2),
+	)(3);
+	equal(sequencedValues.join(","), "3,6", "sequence order and arguments");
+	const attributed = make<Folder>({});
+	const chainedInstance = setAttributes<Folder>(true, "First", "Second")(attributed);
+	equal(chainedInstance, attributed, "setAttributes chain value");
+	equal(attributed.GetAttribute("First"), true, "setAttributes first");
+	clearAttributes<Folder>("First", "Second")(attributed);
+	equal(attributed.GetAttribute("Second"), undefined, "clearAttributes");
+	attributed.Destroy();
+
 	equal(Option.unwrap(Option.map(Option.some(2), (value) => value * 3)), 6, "Option.map");
 	equal(
 		Option.unwrapOrElse(Option.none<number>(), () => 4),

@@ -3,6 +3,15 @@
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {
+			"rbxts_include": {
+				"$className": "Folder",
+				"node_modules": {
+					"$className": "Folder",
+					"@rbxts": {
+						"$path": "node_modules/@rbxts"
+					}
+				}
+			},
 			"fp": {
 				"$path": "out"
 			}

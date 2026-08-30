@@ -4,7 +4,8 @@
 		"rootDir": "tests",
 		"outDir": "test-out",
 		"declaration": false,
-		"tsBuildInfoFile": ".tests.tsbuildinfo"
+		"tsBuildInfoFile": ".tests.tsbuildinfo",
+		"plugins": [{ "transform": "@rbxts/instance-factory/transformer" }]
 	},
 	"include": ["tests/runtime.ts", "tests/runner.server.ts", "tests/types.ts"],
 	"exclude": ["node_modules", "out", "tests/negative"]

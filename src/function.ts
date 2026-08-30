@@ -11,6 +11,14 @@ export function tap<T>(value: T, effect: (value: T) => void): T {
 	return value;
 }
 
+export function sequence<Arguments extends unknown[]>(
+	...effects: ReadonlyArray<(...arguments_: Arguments) => void>
+): (...arguments_: Arguments) => void {
+	return (...arguments_) => {
+		for (const effect of effects) effect(...arguments_);
+	};
+}
+
 export function pipe<A>(value: A): A;
 export function pipe<A, B>(value: A, ab: (value: A) => B): B;
 export function pipe<A, B, C>(value: A, ab: (value: A) => B, bc: (value: B) => C): C;

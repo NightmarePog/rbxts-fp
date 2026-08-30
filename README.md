@@ -15,7 +15,7 @@ The package provides:
 -   `Effect` for cold synchronous work and controlled mutation;
 -   `TaskResult` for cold Promise work with an expected, typed failure;
 -   exhaustive dispatch for `{ type: "..." }` unions;
--   `pipe`, `flow`, `compose`, `identity`, `constant`, and `tap`;
+-   `pipe`, `flow`, `compose`, `sequence`, `identity`, `constant`, and `tap`;
 -   typed predicate combinators;
 -   fused or absence-aware collection helpers;
 -   cleanup-function adapters for Roblox signals.
@@ -229,6 +229,8 @@ stopListening(); // safe to call more than once
 
 Use Maid when ownership requires a full cleanup container; this helper only normalizes one connection to the common cleanup-function shape.
 
+`setAttributes` and `clearAttributes` build chainable instance transforms for projection code that writes several attributes at once.
+
 ## API reference
 
 ### Option
@@ -294,10 +296,12 @@ Use Maid when ownership requires a full cleanup container; this helper only norm
 
 -   `match` exhaustively dispatches literal `{ type: "..." }` unions; `absurd` throws if an impossible value reaches runtime.
 -   `pipe`, `flow`, and `compose` preserve inference through nine transformation stages.
+-   `sequence` combines functions with the same inputs into one left-to-right side effect.
 -   `identity`, `constant`, and top-level `tap` provide small function-building primitives.
 -   `Predicate.and/or/not/all/any` compose boolean predicates and refinements.
 -   `Collection` contains data-last forms of every specialized collection transformation.
 -   `connect` and `connectionCleanup` normalize Roblox connections to idempotent cleanup functions.
+-   `setAttributes` and `clearAttributes` create chainable Roblox attribute transforms.
 
 ## Testing
 

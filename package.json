@@ -21,6 +21,7 @@
 	},
 	"devDependencies": {
 		"@rbxts/compiler-types": "3.0.0-types.0",
+		"@rbxts/instance-factory": "file:../instance-factory/out",
 		"@rbxts/types": "^1.0.920",
 		"roblox-ts": "^3.0.0",
 		"typescript": "5.5.3"

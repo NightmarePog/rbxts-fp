@@ -11,6 +11,15 @@ local function tap(value, effect)
 	effect(value)
 	return value
 end
+local function sequence(...)
+	local effects = { ... }
+	return function(...)
+		local arguments_ = { ... }
+		for _, effect in effects do
+			effect(unpack(arguments_))
+		end
+	end
+end
 local function pipe(value, ab, bc, cd, de, ef, fg, gh, hi, ij)
 	local current = value
 	if ab ~= nil then
@@ -67,6 +76,7 @@ return {
 	identity = identity,
 	constant = constant,
 	tap = tap,
+	sequence = sequence,
 	pipe = pipe,
 	flow = flow,
 	compose = compose,

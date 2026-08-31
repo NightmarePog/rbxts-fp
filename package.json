@@ -15,13 +15,20 @@
 		"functional-programming"
 	],
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NightmarePog/rbxts-fp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/NightmarePog/rbxts-fp/issues"
+	},
+	"homepage": "https://github.com/NightmarePog/rbxts-fp#readme",
 	"peerDependencies": {
 		"@rbxts/types": ">=1.0.920",
 		"roblox-ts": "^3.0.0"
 	},
 	"devDependencies": {
 		"@rbxts/compiler-types": "3.0.0-types.0",
-		"@rbxts/instance-factory": "file:../instance-factory/out",
 		"@rbxts/types": "^1.0.920",
 		"roblox-ts": "^3.0.0",
 		"typescript": "5.5.3"

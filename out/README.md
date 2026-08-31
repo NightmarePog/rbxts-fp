@@ -2,7 +2,7 @@
 
 Small functional building blocks designed for roblox-ts and Luau. The package favors tagged values and ordinary functions over classes, method wrappers, and runtime type machinery.
 
-Public operations are pure unless their name explicitly describes an effect (`tap`, `connect`, or `connectionCleanup`). Implementations use local mutation and direct loops where that avoids intermediate tables or callback closures; inputs are never mutated.
+Public operations are pure unless their name explicitly describes an effect (such as `tap`, `connect`, or the attribute setters). Implementations use local mutation and direct loops where that avoids intermediate tables or callback closures; inputs are never mutated unless an effectful operation says otherwise.
 
 ## Why this package is small
 
@@ -18,6 +18,7 @@ The package provides:
 -   `pipe`, `flow`, `compose`, `sequence`, `identity`, `constant`, and `tap`;
 -   typed predicate combinators;
 -   fused or absence-aware collection helpers;
+-   direct and chainable Roblox attribute helpers;
 -   cleanup-function adapters for Roblox signals.
 
 It deliberately does not provide a fiber scheduler, dependency container, or second cancellation system. `Effect` supplies explicit synchronous boundaries and finalization; `TaskResult` composes roblox-ts Promise for asynchronous work. Flamework, Maid, and Roblox retain their existing responsibilities.
@@ -229,7 +230,7 @@ stopListening(); // safe to call more than once
 
 Use Maid when ownership requires a full cleanup container; this helper only normalizes one connection to the common cleanup-function shape.
 
-`setAttributes` and `clearAttributes` build chainable instance transforms for projection code that writes several attributes at once.
+`setAttributeValues` writes ordered `name, value` pairs in one pass, including explicit `undefined` clears. `setAttributeValue` applies one value to several names, while `clearAttributeValues` clears them. `setAttributes` and `clearAttributes` remain the chainable pipeline forms.
 
 ## API reference
 
@@ -301,7 +302,7 @@ Use Maid when ownership requires a full cleanup container; this helper only norm
 -   `Predicate.and/or/not/all/any` compose boolean predicates and refinements.
 -   `Collection` contains data-last forms of every specialized collection transformation.
 -   `connect` and `connectionCleanup` normalize Roblox connections to idempotent cleanup functions.
--   `setAttributes` and `clearAttributes` create chainable Roblox attribute transforms.
+-   `setAttributeValue`, `setAttributeValues`, and `clearAttributeValues` update Roblox attributes directly; `setAttributes` and `clearAttributes` provide chainable transforms.
 
 ## Testing
 

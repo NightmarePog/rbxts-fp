@@ -7,6 +7,14 @@
 	"files": ["*.luau", "*.d.ts", "README.md"],
 	"keywords": ["roblox", "roblox-ts", "rbxts", "functional-programming"],
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NightmarePog/rbxts-fp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/NightmarePog/rbxts-fp/issues"
+	},
+	"homepage": "https://github.com/NightmarePog/rbxts-fp#readme",
 	"publishConfig": { "access": "public" },
 	"peerDependencies": {
 		"@rbxts/types": ">=1.0.920",

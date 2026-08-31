@@ -1,4 +1,3 @@
-import make from "@rbxts/instance-factory";
 import {
 	Collection,
 	Effect,
@@ -7,6 +6,7 @@ import {
 	Result,
 	TaskResult,
 	absurd,
+	clearAttributeValues,
 	compose,
 	connectionCleanup,
 	clearAttributes,
@@ -22,6 +22,8 @@ import {
 	pipe,
 	scan,
 	sequence,
+	setAttributeValue,
+	setAttributeValues,
 	setAttributes,
 	sumBy,
 	uniqueBy,
@@ -44,7 +46,14 @@ export function runRuntimeTests(): void {
 		(value) => sequencedValues.push(value * 2),
 	)(3);
 	equal(sequencedValues.join(","), "3,6", "sequence order and arguments");
-	const attributed = make<Folder>({});
+	const attributed = new Instance("Folder");
+	setAttributeValues(attributed, "Count", 2, "Ready", true);
+	equal(attributed.GetAttribute("Count"), 2, "setAttributeValues number");
+	equal(attributed.GetAttribute("Ready"), true, "setAttributeValues boolean");
+	clearAttributeValues(attributed, "Count", "Ready");
+	equal(attributed.GetAttribute("Count"), undefined, "clearAttributeValues");
+	setAttributeValue(attributed, false, "First", "Second");
+	equal(attributed.GetAttribute("Second"), false, "setAttributeValue");
 	const chainedInstance = setAttributes<Folder>(true, "First", "Second")(attributed);
 	equal(chainedInstance, attributed, "setAttributes chain value");
 	equal(attributed.GetAttribute("First"), true, "setAttributes first");

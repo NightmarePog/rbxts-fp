@@ -206,7 +206,10 @@ local function timeout(task, seconds, onTimeout)
 				end
 				settled = true
 				source:cancel()
-				resolve(err(onTimeout()))
+				-- Adopt the Promise-native error channel if the timeout mapper throws.
+				resolve(TS.Promise.try(function()
+					return err(onTimeout())
+				end))
 			end)
 		end)
 	end

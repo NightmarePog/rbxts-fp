@@ -337,6 +337,10 @@ export function runRuntimeTests(): void {
 	const timed = TaskResult.timeout(neverFinishes, 0, () => "timeout" as const)().expect();
 	equal(Result.unwrapErr(timed), "timeout", "TaskResult.timeout error");
 	equal(timeoutCancelled, true, "TaskResult.timeout cancellation");
+	throws(
+		() => TaskResult.timeout(neverFinishes, 0, () => error("timeout mapper defect"))().expect(),
+		"TaskResult.timeout mapper defect",
+	);
 
 	let disconnectCalls = 0;
 	const connection = {

@@ -1,10 +1,13 @@
 {
-	"name": "@rbxts/fp-source",
+	"name": "@rbxts/fp",
 	"version": "0.1.0",
 	"private": true,
 	"description": "Practical, lightweight functional programming primitives for roblox-ts.",
+	"main": "out/init.luau",
+	"types": "out/index.d.ts",
+	"typings": "out/index.d.ts",
 	"scripts": {
-		"build": "rbxtsc --type=package && cp package.dist.json out/package.json && cp README.md out/README.md",
+		"build": "rbxtsc --type=package && cp package.dist.json out/package.json && cp README.md out/README.md && cp LICENSE out/LICENSE",
 		"check": "rbxtsc --type=package && rbxtsc -p tsconfig.tests.json --noInclude && tsc -p tsconfig.type-tests.json",
 		"clean": "rm -rf out test-out .tsbuildinfo .tests.tsbuildinfo .type-tests.tsbuildinfo"
 	},

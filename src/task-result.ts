@@ -179,7 +179,8 @@ export function timeout<A, E, F>(task: TaskResult<A, E>, seconds: number, onTime
 				if (settled) return;
 				settled = true;
 				source.cancel();
-				resolve(err<F, A>(onTimeout()));
+				// Adopt the Promise-native error channel if the timeout mapper throws.
+				resolve(Promise.try(() => err<F, A>(onTimeout())));
 			});
 		});
 }

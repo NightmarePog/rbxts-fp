@@ -4,6 +4,14 @@ Small functional building blocks designed for roblox-ts and Luau. The package fa
 
 Public operations are pure unless their name explicitly describes an effect (such as `tap`, `connect`, or the attribute setters). Implementations use local mutation and direct loops where that avoids intermediate tables or callback closures; inputs are never mutated unless an effectful operation says otherwise.
 
+## Install
+
+Pin the repository release tag so application builds do not follow a moving branch:
+
+```sh
+npm install github:NightmarePog/rbxts-fp#v0.1.0
+```
+
 ## Why this package is small
 
 roblox-ts already compiles array operations such as `map`, `filter`, `mapFiltered`, `find`, and `reduce` directly to efficient Luau. Its Promise implementation already provides cancellation and cleanup hooks. Sift, Maid, and observer packages cover larger immutable-collection and lifecycle needs. `@rbxts/fp` does not duplicate them.

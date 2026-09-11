@@ -4,9 +4,11 @@
 	"description": "Practical, lightweight functional programming primitives for roblox-ts.",
 	"main": "init.luau",
 	"types": "index.d.ts",
+	"typings": "index.d.ts",
 	"files": ["*.luau", "*.d.ts", "README.md"],
 	"keywords": ["roblox", "roblox-ts", "rbxts", "functional-programming"],
 	"license": "MIT",
+	"author": "NightmarePog",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/NightmarePog/rbxts-fp.git"

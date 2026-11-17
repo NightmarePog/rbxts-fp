@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/fp",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Practical, lightweight functional programming primitives for roblox-ts.",
 	"main": "init.luau",
 	"types": "index.d.ts",

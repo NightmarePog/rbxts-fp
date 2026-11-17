@@ -10,6 +10,7 @@ import {
 	flow,
 	match,
 	pipe,
+	pipeVoid,
 	type Refinement,
 	type Effect as EffectType,
 	type TaskResult as TaskResultType,
@@ -25,6 +26,13 @@ const piped = pipe(
 	(value) => value.size(),
 );
 type PipeInference = Expect<Equal<typeof piped, number>>;
+
+const pipedVoid = pipeVoid(
+	2,
+	(value) => `${value}`,
+	(value) => value.size(),
+);
+type PipeVoidInference = Expect<Equal<typeof pipedVoid, void>>;
 
 const formatted = flow(
 	(left: number, right: number) => left + right,

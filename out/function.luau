@@ -51,6 +51,14 @@ local function pipe(value, ab, bc, cd, de, ef, fg, gh, hi, ij)
 	end
 	return current
 end
+--* Runs `value` through `stages` like `pipe`, discarding the final result. 
+local function pipeVoid(value, ...)
+	local stages = { ... }
+	local current = value
+	for _, stage in stages do
+		current = stage(current)
+	end
+end
 local function flow(first, ...)
 	local steps = { ... }
 	return function(...)
@@ -78,6 +86,7 @@ return {
 	tap = tap,
 	sequence = sequence,
 	pipe = pipe,
+	pipeVoid = pipeVoid,
 	flow = flow,
 	compose = compose,
 }

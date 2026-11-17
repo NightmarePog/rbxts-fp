@@ -20,6 +20,7 @@ import {
 	minBy,
 	partition,
 	pipe,
+	pipeVoid,
 	scan,
 	sequence,
 	setAttributeValue,
@@ -169,6 +170,13 @@ export function runRuntimeTests(): void {
 		12,
 		"pipe",
 	);
+	let piped = 0;
+	pipeVoid(
+		2,
+		(value) => value + 2,
+		(value) => (piped = value * 3),
+	);
+	equal(piped, 12, "pipeVoid");
 	equal(flow((left: number, right: number) => left + right, tostring)(2, 3), "5", "flow");
 	equal(
 		compose(

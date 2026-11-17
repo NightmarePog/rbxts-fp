@@ -105,6 +105,77 @@ export function pipe(
 	return current;
 }
 
+/** Runs `value` through `stages` like `pipe`, discarding the final result. */
+export function pipeVoid<A>(value: A, ab: (value: A) => unknown): void;
+export function pipeVoid<A, B>(value: A, ab: (value: A) => B, bc: (value: B) => unknown): void;
+export function pipeVoid<A, B, C>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => unknown,
+): void;
+export function pipeVoid<A, B, C, D>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => unknown,
+): void;
+export function pipeVoid<A, B, C, D, E>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => E,
+	ef: (value: E) => unknown,
+): void;
+export function pipeVoid<A, B, C, D, E, F>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => E,
+	ef: (value: E) => F,
+	fg: (value: F) => unknown,
+): void;
+export function pipeVoid<A, B, C, D, E, F, G>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => E,
+	ef: (value: E) => F,
+	fg: (value: F) => G,
+	gh: (value: G) => unknown,
+): void;
+export function pipeVoid<A, B, C, D, E, F, G, H>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => E,
+	ef: (value: E) => F,
+	fg: (value: F) => G,
+	gh: (value: G) => H,
+	hi: (value: H) => unknown,
+): void;
+export function pipeVoid<A, B, C, D, E, F, G, H, I>(
+	value: A,
+	ab: (value: A) => B,
+	bc: (value: B) => C,
+	cd: (value: C) => D,
+	de: (value: D) => E,
+	ef: (value: E) => F,
+	fg: (value: F) => G,
+	gh: (value: G) => H,
+	hi: (value: H) => I,
+	ij: (value: I) => unknown,
+): void;
+export function pipeVoid(value: unknown, ...stages: ReadonlyArray<(value: unknown) => unknown>): void {
+	let current = value;
+	for (const stage of stages) current = stage(current);
+}
+
 export function flow<A extends unknown[], B>(ab: (...args: A) => B): (...args: A) => B;
 export function flow<A extends unknown[], B, C>(ab: (...args: A) => B, bc: (value: B) => C): (...args: A) => C;
 export function flow<A extends unknown[], B, C, D>(

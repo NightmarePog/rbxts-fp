@@ -12,6 +12,16 @@ export declare function pipe<A, B, C, D, E, F, G>(value: A, ab: (value: A) => B,
 export declare function pipe<A, B, C, D, E, F, G, H>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => H): H;
 export declare function pipe<A, B, C, D, E, F, G, H, I>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => H, hi: (value: H) => I): I;
 export declare function pipe<A, B, C, D, E, F, G, H, I, J>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => H, hi: (value: H) => I, ij: (value: I) => J): J;
+/** Runs `value` through `stages` like `pipe`, discarding the final result. */
+export declare function pipeVoid<A>(value: A, ab: (value: A) => unknown): void;
+export declare function pipeVoid<A, B>(value: A, ab: (value: A) => B, bc: (value: B) => unknown): void;
+export declare function pipeVoid<A, B, C>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => unknown): void;
+export declare function pipeVoid<A, B, C, D>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => unknown): void;
+export declare function pipeVoid<A, B, C, D, E>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => unknown): void;
+export declare function pipeVoid<A, B, C, D, E, F>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => unknown): void;
+export declare function pipeVoid<A, B, C, D, E, F, G>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => unknown): void;
+export declare function pipeVoid<A, B, C, D, E, F, G, H>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => H, hi: (value: H) => unknown): void;
+export declare function pipeVoid<A, B, C, D, E, F, G, H, I>(value: A, ab: (value: A) => B, bc: (value: B) => C, cd: (value: C) => D, de: (value: D) => E, ef: (value: E) => F, fg: (value: F) => G, gh: (value: G) => H, hi: (value: H) => I, ij: (value: I) => unknown): void;
 export declare function flow<A extends unknown[], B>(ab: (...args: A) => B): (...args: A) => B;
 export declare function flow<A extends unknown[], B, C>(ab: (...args: A) => B, bc: (value: B) => C): (...args: A) => C;
 export declare function flow<A extends unknown[], B, C, D>(ab: (...args: A) => B, bc: (value: B) => C, cd: (value: C) => D): (...args: A) => D;
